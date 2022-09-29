@@ -4,21 +4,22 @@ import java.util.ArrayList;
 //https://github.com/davidmoralesluis/TextoDelimitado.git
 public class Main {
     public static void main(String[] args) throws IOException {
+        PrintWriter escribir = new PrintWriter(new BufferedWriter(new FileWriter(new File(System.getProperty("user.dir")+"/src/main/java/produtos.txt"))));
 
         String[] cod={"p1","p2","p3"};
         String[] desc={"parafusos","cravos","tachas"};
         int[] prezo={3,4,5};
-        String textoTotal="";
         String unaLine="";
+        String textoTotal="";
 
         for (int i = 0; i < cod.length; i++) {
-            textoTotal+=cod[i]+"\t"+desc[i]+"\t"+prezo[i]+"\n";
+            textoTotal=cod[i]+"\t"+desc[i]+"\t"+prezo[i];
+            escribir.println(textoTotal);
+
         }
-        System.out.println(textoTotal);
+        // System.out.println(textoTotal);
 
-        PrintWriter escribir = new PrintWriter(new BufferedWriter(new FileWriter(new File(System.getProperty("user.dir")+"/src/main/java/produtos.txt"))));
 
-        escribir.write(textoTotal);
         escribir.flush();
         escribir.close();
 
